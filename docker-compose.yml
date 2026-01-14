@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: odoo19_db
+    environment:
+      POSTGRES_DB: lab19
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+    volumes:
+      - /home/emanue/odoo-folder/src17/odoo17dockerizzata/data/db:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"  # porta host diversa per evitare conflitto con Postgres 14
+    restart: unless-stopped
+
+  odoo:
+    user: root
+    image: odoo:19
+    container_name: odoo19_app
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    volumes:
+      - ./odoo_data:/var/lib/odoo
+      - /home/emanue/odoo-folder/src19/lab19/design-themes-19:/mnt/design-themes
+      - /home/emanue/odoo-folder/src19/lab19/enterprise-19:/mnt/enterprise
+      - /home/emanue/odoo-folder/src19/lab19/cmg-19.0:/mnt/custom
+      - /home/emanue/odoo-folder/src19/odoo19dockerizzato/config/lab19.conf:/etc/odoo/odoo.conf
+      - /home/emanue/odoo-folder/src19/lab19:/workspace
+    command:
+    - odoo
+    - -c
+    - /etc/odoo/odoo.conf
+    - --dev=all
+    restart: unless-stopped
