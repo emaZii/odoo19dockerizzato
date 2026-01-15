@@ -9,7 +9,7 @@ services:
       POSTGRES_USER: odoo
       POSTGRES_PASSWORD: odoo
     volumes:
-      - /home/emanue/odoo-folder/src17/odoo17dockerizzata/data/db:/var/lib/postgresql/data
+      - /home/emanue/odoo-folder/src17/odoo17dockerizzato/data/db:/var/lib/postgresql/data
     ports:
       - "5433:5432"  # porta host diversa per evitare conflitto con Postgres 14
     restart: unless-stopped
@@ -35,3 +35,4 @@ services:
     - /etc/odoo/odoo.conf
     - --dev=all
     restart: unless-stopped
+
