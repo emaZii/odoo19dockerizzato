@@ -24,8 +24,8 @@ services:
       - "8069:8069"
     volumes:
       - ./odoo_data:/var/lib/odoo
-      - /home/emanue/odoo-folder/src19/lab19/design-themes-19:/mnt/design-themes
-      - /home/emanue/odoo-folder/src19/lab19/enterprise-19:/mnt/enterprise
+      - /home/emanue/odoo-folder/src19/design-themes-19:/mnt/design-themes
+      - /home/emanue/odoo-folder/src19/enterprise-19:/mnt/enterprise
       - /home/emanue/odoo-folder/src19/lab19/cmg-19.0:/mnt/custom
       - /home/emanue/odoo-folder/src19/odoo19dockerizzato/config/lab19.conf:/etc/odoo/odoo.conf
       - /home/emanue/odoo-folder/src19/lab19:/workspace
@@ -35,4 +35,5 @@ services:
     - /etc/odoo/odoo.conf
     - --dev=all
     restart: unless-stopped
+
 
