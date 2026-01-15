@@ -28,12 +28,12 @@ services:
       - /home/emanue/odoo-folder/src19/enterprise-19:/mnt/enterprise
       - /home/emanue/odoo-folder/src19/lab19/cmg-19.0:/mnt/custom
       - /home/emanue/odoo-folder/src19/odoo19dockerizzato/config/lab19.conf:/etc/odoo/odoo.conf
-      - /home/emanue/odoo-folder/src19/lab19:/workspace
     command:
     - odoo
     - -c
     - /etc/odoo/odoo.conf
     - --dev=all
     restart: unless-stopped
+
 
 
